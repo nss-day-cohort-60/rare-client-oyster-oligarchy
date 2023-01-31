@@ -1,62 +1,40 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
+export const AddCategory = () => {
+  const [value, setValue] = useState('');
 
-export const categoryAdd = () => {
-
-
-    const [category, addCategory] = useState({
-        label: ""
-    })
-
-    const navigate = useNavigate()
-
-    const handleSaveButtonClick = (click) => {
-        click.preventDefault()
-
-        return fetch(`http://localhost:8088/categories`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(guitar)
-        })
-            .then(response => response.json())
-            .then(() => window.alert("Successfully Added")
-
-            ).then(() => {
-                navigate("/categories")
-            }
-            )
-
-
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  const handleSaveButtonClick = (event) => {
+    event.preventDefault()
+    const categoryToSendToAPI = {
+        label: value
+        
     }
-    return (
-        <div className="form-group">
-            <label htmlFor="specialty"></label>
-            <input
-                required autoFocus
-                type="text"
-                className="form-control"
-                placeholder="Brand"
-                value={guitar.brand}
-                onChange={
-                    (evt) => {
-                        const copy = { ...guitar }
-                        copy.label = (evt.target.value)
-                        addCategory(copy)
-                    }
-                } />
-            <div>
-
-                <button
-                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                    className="btn btn-dark btn-lg">
-                    Add Equipment
-                </button>
-            </div>
-        </div>
-
-
-    )
-
+    return fetch(`http://localhost:8088/categories`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(categoryToSendToAPI)
+    })
+        .then(()=> {
+        Navigate("/categories")
+    })
 }
+
+
+  
+
+  return (
+    <form>
+        <label htmlFor="categoryadd">Add New Category</label>
+      <input className="categoryadd" type="text" value={value} onChange={handleChange} />
+      <button
+      onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+      >Save Category</button>
+    </form>
+  );
+}
+

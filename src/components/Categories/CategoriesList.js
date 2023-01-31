@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { AddCategory } from "./AddCategoryForm"
 import "./Categories.css"
 
     // const localRainbowUser = localStorage.getItem("rainbow_user")
@@ -35,7 +36,7 @@ export const CategoryList = () => {
             .then((categoryArray) => {
             setCategories(categoryArray)
             })
-    }, [])
+    }, [categories])
 
         return (
             <>
@@ -51,8 +52,10 @@ export const CategoryList = () => {
                             <h3 className="categories-title">{categoryObj.label}</h3>
                         </div>
                         </div>
+                        
                     )
                 })}
+                <AddCategory></AddCategory>
                 </div>
             </>
         )
