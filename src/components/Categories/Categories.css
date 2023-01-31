@@ -7,10 +7,20 @@
 
 .categories-container{
     align-items: center;
-    margin-left: 250px;
+    margin-left: 200px;
 }
 
 .activity-card{
     border: 2px solid black;
     width: 500px;
+}
+
+.category-card {
+    display: flex;
+
+}
+
+.category-button {
+    display: flex;
+    padding-right: 3px ;
 }
