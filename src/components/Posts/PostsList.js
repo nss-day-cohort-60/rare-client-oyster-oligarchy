@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./Posts.css"
+import { SinglePost } from "./SinglePost"
 
     // const localRainbowUser = localStorage.getItem("rainbow_user")
     // const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -47,12 +48,17 @@ export const PostList = () => {
                     return (
                         <div className="activity-card" key={postObj.id}>
                         <div className="each-post">
-                            <h3 className="post-title">{postObj.title}</h3>
+                            <h3 className="post-title" value={postObj.id}>
+                                <a className="post-title"  onClick={() => navigate(`/post-details/${postObj.id}`)}>
+                                    {postObj.title}
+                                </a>
+                            </h3>
                             <p className="post-details">Author: {postObj.user.first_name} {postObj.user.last_name}</p>
                             <p className="post-details">Category: {postObj.category.label}</p>
                         </div>
                         </div>
                     )
+                    
                 })}
                 </div>
             </>
