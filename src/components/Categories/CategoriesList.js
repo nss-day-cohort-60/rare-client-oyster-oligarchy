@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { AddCategory } from "./AddCategoryForm"
 import "./Categories.css"
 
     // const localRainbowUser = localStorage.getItem("rainbow_user")
@@ -8,6 +9,7 @@ import "./Categories.css"
 export const CategoryList = () => {
     const [categories, setCategories] = useState ([])
     // const [filteredPosts, setFiltered] = useState([])
+    const [value, setValue] = useState('')
     const navigate = useNavigate()
 
     // useEffect(
@@ -36,7 +38,39 @@ export const CategoryList = () => {
             setCategories(categoryArray)
             })
     }, [])
-
+    const rerender = () => {
+        fetch(`http://localhost:8088/categories`)
+            .then((res) => res.json())
+            .then((categoryArray) => {
+            setCategories(categoryArray)
+            })
+    }
+   
+    const handleChange = (event) => {
+        setValue(event.target.value);
+        
+      };
+      const handleSaveButtonClick = (event) => {
+        event.preventDefault()
+        const categoryToSendToAPI = {
+            label: value
+            
+        }
+        return fetch(`http://localhost:8088/categories`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(categoryToSendToAPI)
+        })
+        .then (rerender)
+        
+  
+        
+        
+      
+    }
+    
         return (
             <>
             <div className="top-of-posts">
@@ -51,8 +85,16 @@ export const CategoryList = () => {
                             <h3 className="categories-title">{categoryObj.label}</h3>
                         </div>
                         </div>
+                        
                     )
                 })}
+                <form>
+        <label htmlFor="categoryadd">Add New Category</label>
+      <input className="categoryadd" type="text" value={value} onChange={handleChange} />
+      <button
+      onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+      >Save Category</button>
+    </form>
                 </div>
             </>
         )
