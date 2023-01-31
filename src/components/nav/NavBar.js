@@ -43,10 +43,12 @@ export const NavBar = ({ token, setToken }) => {
                     navigate("/my-posts")
                     refreshPage()
                 }}>My Posts</Link>
+                <Link to="/new-post" className="navbar-item">New Post</Link>
               </>
               :
               ""
           }
+          
           {
             token
               ?

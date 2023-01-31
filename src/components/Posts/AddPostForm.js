@@ -15,17 +15,28 @@ export const AddPostForm = () => {
         content: "",
         approved: ""
     })
+    const [categories, setCategory] = useState([])
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        fetch('http://localhost:8088/categories')
+            .then((res) => res.json())
+            .then((categoriesData) => {
+            setCategory(categoriesData)
+        })
+    }, [])
+
     const handleSaveButtonClick = (click) => {
         click.preventDefault()
+
+        
 
         const postToSend = {
             user_id: userObject.id,
             category_id: post.category_id,
             title: post.title,
-            publication_date: post.publication_date,
+            publication_date: today,
             image_url: post.image_url,
             content: post.content,
             approved: post.approved
@@ -46,40 +57,35 @@ export const AddPostForm = () => {
             }
             )
 
-
     }
     return (
         <>
-        
+{/*         
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
-        </div>
+        </div> */}
         
         <form className="postForm">
             <h2 className="postForm_title">New Post</h2>
             <fieldset>
-                <div className="form-group">
-                    <label className="act-text" htmlFor="category_id">Post Name:</label>
-                    <input
-                        required
-                        type="text"
-                        className="act-control"
-                        placeholder="Category"
-                        value={post.category_id}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...post}
-                                copy.category_id = evt.target.value
-                                addPost(copy)
-                            }
-                        } />
+                <div className="">
+                    <label>
+                        <select className="form-group" onChange={(evt) => {
+                            const copy = { ...post }
+                            copy.category_id = parseInt(evt.target.value)
+                            addPost(copy)
+                        }} >
+                            <option>Choose Category</option>
+                            {categories.map(categoryObj => (
+                                <option value={categoryObj.id} key={categoryObj.id}>{categoryObj.label}</option>))}
+                        </select>
+                    </label>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="act-text" htmlFor="title">Post Location:</label>
+                    <label className="act-text" htmlFor="category_id">Title: </label>
                     <input
-                        required
                         type="text"
                         className="act-control"
                         placeholder="Title"
@@ -95,101 +101,45 @@ export const AddPostForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="act-text" htmlFor="date">Post Date:</label>
+                    <label className="act-text" htmlFor="category_id">Image_url: </label>
                     <input
-                        required
-                        type="date"
+                        type="text"
                         className="act-control"
-                        placeholder="Date of Post"
-                        value={post.date} 
+                        placeholder="Image_url"
+                        value={post.image_url}
                         onChange={
                             (evt)=> {
                                 const copy = {...post}
-                                copy.date = evt.target.value
+                                copy.image_url = evt.target.value
                                 addPost(copy)
                             }
                         } />
                 </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label className="act-text" htmlFor="category_id">Content: </label>
+                    <input
+                        type="text"
+                        className="act-control"
+                        placeholder="Content"
+                        value={post.content}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...post}
+                                copy.content = evt.target.value
+                                addPost(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
 
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label className="act-text" htmlFor="start-time">Post Start Time:</label>
-                    <input
-                        required
-                        type="time"
-                        className="act-control"
-                        placeholder="Start Time"
-                        value={post.startTime}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...post}
-                                copy.startTime = evt.target.value
-                                addPost(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label className="act-text" htmlFor="end-time">Post End Time:</label>
-                    <input
-                        required
-                        type="time"
-                        className="act-control"
-                        placeholder="End Time"
-                        value={post.endTime}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...post}
-                                copy.endTime = evt.target.value
-                                addPost(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label className="act-text" htmlFor="name">Maverick:</label>
-                    <input type="radio"
-                        name="kid"
-                        value="1"
-                        onClick={
-                            (click) => {
-                                const copy = {...post}
-                                copy.kidId = parseInt(click.target.value)
-                                addPost(copy)
-                            }
-                        } />
-                    <label className="act-text" htmlFor="name">Adaline:</label>
-                    <input type="radio"
-                        name="kid"
-                        value= "2"
-                        onClick={
-                            (click) => {
-                                const copy = {...post}
-                                copy.kidId = parseInt(click.target.value)
-                                addPost(copy)
-                            }
-                        } />
-                        <label className="act-text" htmlFor="name">Both:</label>
-                        <input type="radio"
-                        name="kid"
-                        value= "3"
-                        onClick={
-                            (click) => {
-                                const copy = {...post}
-                                copy.kidId = parseInt(click.target.value)
-                                addPost(copy)
-                            }
-                        } /> 
-                </div>
-            </fieldset>
+
             <button
                     onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                     className="btn btn-dark btn-lg">
                     Add Post
-                </button>
+            </button>
             {/* <button 
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
             className="save-button">

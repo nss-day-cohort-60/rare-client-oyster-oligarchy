@@ -9,13 +9,13 @@ import { SinglePost } from "../components/Posts/SinglePost"
 import { CategoryList } from "../components/Categories/CategoriesList"
 import { Authorized } from "./Authorized"
 import { AddCategory, AddCatergory, categoryAdd } from "../components/Categories/AddCategoryForm"
+import { AddPostForm } from "../components/Posts/AddPostForm"
 
 export const ApplicationViews = ({ token, setToken }) => {
   return <>
     <Routes>
       <Route path="/login" element={<Login setToken={setToken} />}  />
       <Route path="/register" element={<Register setToken={setToken} />}  />
-      <Route element={<Authorized token={token} />} />
       <Route path="/posts" element={<PostList setToken={setToken} />}  />
 
       <Route path="/post-details/:postId" element={<SinglePost setToken={setToken} />} />
@@ -24,6 +24,7 @@ export const ApplicationViews = ({ token, setToken }) => {
       <Route element={<Authorized token={token} />}>
         {/* Add Routes here */}
       <Route path="/my-posts" element={<MyPosts setToken={setToken} />}  />
+      <Route path="/new-post" element={<AddPostForm setToken={setToken} />}  />
         
       </Route>
     </Routes>
