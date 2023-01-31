@@ -8,7 +8,6 @@ const userObject = JSON.parse(localUser)
 
 export const MyPosts = () => {
     const [posts, setPosts] = useState ([])
-    // const [filteredPosts, setFiltered] = useState([])
     const navigate = useNavigate()
 
     console.log(userObject)
@@ -20,6 +19,23 @@ export const MyPosts = () => {
             setPosts(postsArray)
             })
     }, [])
+
+    const formatDate = (postObj) => {
+        let formattedDate = postObj.publication_date.split("-")
+        formattedDate = [formattedDate[1],formattedDate[2],formattedDate[0]]
+        return(formattedDate.join("/"))
+    }
+
+    // const deleteButton = (id) => {
+    //     return <button onClick={() => {
+    //         fetch(`http://localhost:8088/activities/${id}`, {
+    //             method: "DELETE",
+    //         })
+    //             .then(() => {
+    //                 getAllActivities()
+    //             })
+    //     }} className="schedule_delete">Delete</button>
+    // }
 
         return(
             <>
@@ -34,8 +50,14 @@ export const MyPosts = () => {
                             <div className="activity-card" key={postObj.id}>
                             <div className="each-post">
                                 <h3 className="post-title">{postObj.title}</h3>
-                                <p className="post-details">Author: {postObj.first_name} {postObj.last_name}</p>
-                                <p className="post-details">Category: {postObj.label}</p>
+                                <img src={postObj.image_url}/>
+                                <p className="post-details">{postObj.content}</p>
+                                <p className="post-details">Author: {postObj.user.first_name} {postObj.user.last_name}</p>
+                                <p className="post-details">Category: {postObj.category.label}</p>
+                                <p className="post-details">Posted on: {formatDate(postObj)}</p>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                                {/* {deleteButton(activityObj.id)} */}
                             </div>
                             </div>
                         )
