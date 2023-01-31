@@ -1,0 +1,16 @@
+.categories-title {
+    color: black;
+    font-weight: 800;
+    font-size: x-large;
+    margin-left: 40px;
+}
+
+.categories-container{
+    align-items: center;
+    margin-left: 250px;
+}
+
+.activity-card{
+    border: 2px solid black;
+    width: 500px;
+}
