@@ -17,7 +17,7 @@ export const ApplicationViews = ({ token, setToken }) => {
       <Route element={<Authorized token={token} />}>
       <Route path="/posts" element={<PostList setToken={setToken} />}  />
 
-      <Route path="/post-details" element={<SinglePost setToken={setToken} />} />
+      <Route path="/post-details/:postId" element={<SinglePost setToken={setToken} />} />
 
       <Route path="/categories" element={<CategoryList setToken={setToken} />}  />
       <Route path="/my-posts" element={<MyPosts setToken={setToken} />}  />

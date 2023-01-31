@@ -49,9 +49,9 @@ export const PostList = () => {
                         <div className="activity-card" key={postObj.id}>
                         <div className="each-post">
                             <h3 className="post-title" value={postObj.id}>
-                                <Link to="/post-details">
+                                <a className="post-title"  onClick={() => navigate(`/post-details/${postObj.id}`)}>
                                     {postObj.title}
-                                </Link>
+                                </a>
                             </h3>
                             <p className="post-details">Author: {postObj.user.first_name} {postObj.user.last_name}</p>
                             <p className="post-details">Category: {postObj.category.label}</p>

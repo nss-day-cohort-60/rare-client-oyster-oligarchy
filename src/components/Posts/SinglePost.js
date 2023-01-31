@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import "./Posts.css"
 
     // const localRainbowUser = localStorage.getItem("rainbow_user")
     // const rainbowUserObject = JSON.parse(localRainbowUser)
 
-export const SinglePost = (props) => {
+export const SinglePost = () => {
     const [post, setPost] = useState ([])
     // const [filteredPosts, setFiltered] = useState([])
     const navigate = useNavigate()
+    const {postId} = useParams()
 
     // useEffect(
     //     () => {
@@ -28,11 +29,9 @@ export const SinglePost = (props) => {
     // [posts]
     // )
 
-    const singlePostId = props.postId
-    console.log(singlePostId)
 
     useEffect(() => {
-        fetch(`http://localhost:8088/posts/4`)
+        fetch(`http://localhost:8088/posts/${postId}`)
             .then((res) => res.json())
             .then((postsArray) => {
             setPost(postsArray)
@@ -42,7 +41,7 @@ export const SinglePost = (props) => {
         return (
             <>
                 <div className="top-of-posts">
-                    <h1 className="posts-title">Posts</h1>
+                    <h1 className="posts-title">Post Details</h1>
                 </div>
                 
                 <div className="posts-container">
