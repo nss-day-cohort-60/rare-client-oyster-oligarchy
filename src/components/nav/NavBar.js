@@ -40,6 +40,13 @@ export const NavBar = ({ token, setToken }) => {
               :
               ""
           }
+          {
+            token
+              ?
+              <Link to="/categories" className="navbar-item">Category Manager</Link>
+              :
+              ""
+          }
         </div>
 
         <div className="navbar-end">
