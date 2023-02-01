@@ -52,8 +52,8 @@ export const MyPosts = () => {
                                 <h3 className="post-title">{postObj.title}</h3>
                                 <img src={postObj.image_url}/>
                                 <p className="post-details">{postObj.content}</p>
-                                <p className="post-details">Author: {postObj.user.first_name} {postObj.user.last_name}</p>
-                                <p className="post-details">Category: {postObj.category.label}</p>
+                                <p className="post-details">Author: {postObj.first_name} {postObj.last_name}</p>
+                                <p className="post-details">Category: {postObj.label}</p>
                                 <p className="post-details">Posted on: {formatDate(postObj)}</p>
                                 <button>Edit</button>
                                 <button>Delete</button>
