@@ -30,13 +30,14 @@ export const AddPostForm = () => {
     const handleSaveButtonClick = (click) => {
         click.preventDefault()
 
-        
+
 
         const postToSend = {
             user_id: userObject.id,
             category_id: post.category_id,
             title: post.title,
-            publication_date: today,
+            publication_date: post.publication_date,
+            // publication_date: today,
             image_url: post.image_url,
             content: post.content,
             approved: post.approved
