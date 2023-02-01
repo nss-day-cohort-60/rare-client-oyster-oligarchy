@@ -14,3 +14,13 @@
     border: 2px solid black;
     width: 500px;
 }
+
+.category-search {
+    display: flex;
+    margin-left: 250px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+}
