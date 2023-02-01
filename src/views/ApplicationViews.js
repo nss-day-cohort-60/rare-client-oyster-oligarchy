@@ -1,22 +1,22 @@
-import { Route, Routes } from "react-router-dom"
+import { Outlet, Route, Routes } from "react-router-dom"
 import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
 import { MyPosts } from "../components/Posts/MyPosts"
-import { PostList } from "../components/Posts/PostsList"
-
 import { SinglePost } from "../components/Posts/SinglePost"
-
 import { CategoryList } from "../components/Categories/CategoriesList"
 import { Authorized } from "./Authorized"
+import { PostContainer } from "../components/Posts/PostContainer"
+// import { PostList } from "../components/Posts/PostsList"
 import { AddCategory, AddCatergory, categoryAdd } from "../components/Categories/AddCategoryForm"
 import { AddPostForm } from "../components/Posts/AddPostForm"
 
 export const ApplicationViews = ({ token, setToken }) => {
   return <>
     <Routes>
+      <Route path="/" element={<><Outlet/></>} />
       <Route path="/login" element={<Login setToken={setToken} />}  />
       <Route path="/register" element={<Register setToken={setToken} />}  />
-      <Route path="/posts" element={<PostList setToken={setToken} />}  />
+      <Route path="/posts" element={<PostContainer setToken={setToken} />}  />
 
       <Route path="/post-details/:postId" element={<SinglePost setToken={setToken} />} />
 
