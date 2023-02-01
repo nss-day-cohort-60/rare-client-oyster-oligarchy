@@ -73,7 +73,7 @@ export const CategoryList = () => {
     return (
         <>
             <div className="top-of-posts">
-                <h1 className="posts-title">Categories</h1>
+                <h1 className="categories-page-title">Categories</h1>
             </div>
             <div className="categories">
             <div className="categories-container">
@@ -81,10 +81,10 @@ export const CategoryList = () => {
                         return (
                             <div className="categories-buttons">
                                 <div className="edit-delete-btn">
-                                <button className="button is-small is-success">Edit</button>
+                                <button className="button is-medium is-success">Edit</button>
                                 </div>
                                 <div className="edit-delete-btn">
-                                <button className="button is-small is-danger">Delete</button>
+                                <button className="button is-medium is-danger">Delete</button>
                                 </div>
                             <div className="activity-card" key={categoryObj.id}>
                                 <div className="each-post">
@@ -108,7 +108,7 @@ export const CategoryList = () => {
                     <div className="category-btn">
                     <button className="button is-normal"
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                    >Save Category</button>
+                    >Create Category</button>
                     </div>
                 </form>
                 </div>
