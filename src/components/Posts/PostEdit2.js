@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-export const PostEditForm = () => {
+export const PostEditForm2 = () => {
     const localUser = localStorage.getItem("auth_token")
     const userObject = JSON.parse(localUser)
 

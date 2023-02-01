@@ -11,25 +11,6 @@ export const SinglePost = () => {
     const navigate = useNavigate()
     const {postId} = useParams()
 
-    // useEffect(
-    //     () => {
-    //         const searchedPosts = posts.filter
-    //         (post => {
-    //             return post.name.toLowerCase().startsWith(searchTermState.toLowerCase())
-    //         })
-    //         setFiltered(searchedPosts)
-    //     },
-    //     [ searchTermState ]
-    // )
-
-    // useEffect(
-    //     () => {
-    //         setFiltered(posts)
-    //     },
-    // [posts]
-    // )
-
-
     useEffect(() => {
         fetch(`http://localhost:8088/posts/${postId}`)
             .then((res) => res.json())

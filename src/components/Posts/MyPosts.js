@@ -64,7 +64,7 @@ export const MyPosts = () => {
                                 <p className="post-details">Category: {postObj.category.label}</p>
                                 {/* <p className="post-details">Posted on: {formatDate(postObj)}</p> */}
                                 <p className="post-details">Posted on: {postObj.publication_date}</p>
-                                <button>Edit</button>
+                                <button onClick={() => navigate(`/post-edit/${postObj.id}`)}>Edit</button>
 
                                 <button className="delete-button" onClick={()=> {
                                     deleteButton(postObj.id)}}>Delete</button>

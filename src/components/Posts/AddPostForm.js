@@ -58,10 +58,6 @@ export const AddPostForm = () => {
         
     return (
         <>
-{/*         
-        <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
-            {feedback}
-        </div> */}
         
         <form className="postForm">
             <h2 className="postForm_title">New Post</h2>
