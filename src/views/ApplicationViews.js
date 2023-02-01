@@ -7,6 +7,7 @@ import { CategoryList } from "../components/Categories/CategoriesList"
 import { Authorized } from "./Authorized"
 import { PostContainer } from "../components/Posts/PostContainer"
 // import { PostList } from "../components/Posts/PostsList"
+import { AddCategory, AddCatergory, categoryAdd } from "../components/Categories/AddCategoryForm"
 
 export const ApplicationViews = ({ token, setToken }) => {
   return <>
@@ -14,12 +15,13 @@ export const ApplicationViews = ({ token, setToken }) => {
       <Route path="/" element={<><Outlet/></>} />
       <Route path="/login" element={<Login setToken={setToken} />}  />
       <Route path="/register" element={<Register setToken={setToken} />}  />
-      <Route element={<Authorized token={token} />}>
       <Route path="/posts" element={<PostContainer setToken={setToken} />}  />
 
       <Route path="/post-details/:postId" element={<SinglePost setToken={setToken} />} />
 
       <Route path="/categories" element={<CategoryList setToken={setToken} />}  />
+      <Route element={<Authorized token={token} />}>
+        {/* Add Routes here */}
       <Route path="/my-posts" element={<MyPosts setToken={setToken} />}  />
         
       </Route>
