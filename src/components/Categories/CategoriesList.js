@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { AddCategory } from "./AddCategoryForm"
 import "./Categories.css"
 
 // const localRainbowUser = localStorage.getItem("rainbow_user")
@@ -80,24 +79,39 @@ export const CategoryList = () => {
             <div className="categories-container">
                     {categories.map((categoryObj) => {
                         return (
+                            <div className="categories-buttons">
+                                <div className="edit-delete-btn">
+                                <button className="button is-small is-success">Edit</button>
+                                </div>
+                                <div className="edit-delete-btn">
+                                <button className="button is-small is-danger">Delete</button>
+                                </div>
                             <div className="activity-card" key={categoryObj.id}>
                                 <div className="each-post">
                                     <h3 className="categories-title">{categoryObj.label}</h3>
+                                    
                                 </div>
+                            </div>
                             </div>
             
                 )
                 })}
             </div>
-                <aside>
-                <form className="category-search">
-                    <label htmlFor="categoryadd">Add New Category</label>
+                <div className="search-container">
+                <form>
+                    <div className="search-title">
+                    <label htmlFor="categoryadd">Create a New Category</label>
+                    </div>
+                    <div className="category-search">
                     <input className="categoryadd" type="text" value={value} onChange={handleChange} />
-                    <button
+                    </div>
+                    <div className="category-btn">
+                    <button className="button is-normal"
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                     >Save Category</button>
+                    </div>
                 </form>
-                </aside>
+                </div>
 
                 
             </div>

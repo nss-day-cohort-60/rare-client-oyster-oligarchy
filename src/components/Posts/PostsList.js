@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "./Posts.css"
-import { SinglePost } from "./SinglePost"
 
     // const localRainbowUser = localStorage.getItem("rainbow_user")
     // const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -20,7 +19,7 @@ export const PostList = ({searchTermState}) => {
             })
             setFiltered(searchedPosts)
         },
-        [ searchTermState ]
+        [ posts, searchTermState ]
     )
 
     // useEffect(

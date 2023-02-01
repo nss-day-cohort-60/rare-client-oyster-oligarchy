@@ -15,12 +15,41 @@
     width: 500px;
 }
 
-.category-search {
-    display: flex;
-    margin-left: 250px;
-}
-
 .categories {
     display: flex;
     flex-direction: row;
+}
+
+.categories-buttons {
+    display: flex;
+}
+
+.edit-delete-btn {
+    margin-right: 3px
+}
+
+.search-container {
+    display: ;
+    align-items: center;
+    outline-style: solid;
+    margin-left: 200px;
+    border: 1px solid black;
+    width: 400px;
+}
+
+.search-title {
+    text-align: center;
+    color: black;
+    font-weight: 800;
+    font-size: x-large;
+}
+
+.category-search {
+    align-items: center;
+    margin-top: 60px;
+    margin-left: 120px;
+}
+
+.category-btn {
+    margin-top: px;
 }
