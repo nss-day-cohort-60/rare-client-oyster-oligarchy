@@ -73,30 +73,45 @@ export const CategoryList = () => {
     return (
         <>
             <div className="top-of-posts">
-                <h1 className="posts-title">Categories</h1>
+                <h1 className="categories-page-title">Categories</h1>
             </div>
             <div className="categories">
             <div className="categories-container">
                     {categories.map((categoryObj) => {
                         return (
+                            <div className="categories-buttons">
+                                <div className="edit-delete-btn">
+                                <button className="button is-medium is-success">Edit</button>
+                                </div>
+                                <div className="edit-delete-btn">
+                                <button className="button is-medium is-danger">Delete</button>
+                                </div>
                             <div className="activity-card" key={categoryObj.id}>
                                 <div className="each-post">
                                     <h3 className="categories-title">{categoryObj.label}</h3>
+                                    
                                 </div>
+                            </div>
                             </div>
             
                 )
                 })}
             </div>
-                <aside>
-                <form className="category-search">
-                    <label htmlFor="categoryadd">Add New Category</label>
+                <div className="search-container">
+                <form>
+                    <div className="search-title">
+                    <label htmlFor="categoryadd">Create a New Category</label>
+                    </div>
+                    <div className="category-search">
                     <input className="categoryadd" type="text" value={value} onChange={handleChange} />
-                    <button
+                    </div>
+                    <div className="category-btn">
+                    <button className="button is-normal"
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                    >Save Category</button>
+                    >Create Category</button>
+                    </div>
                 </form>
-                </aside>
+                </div>
 
                 
             </div>
