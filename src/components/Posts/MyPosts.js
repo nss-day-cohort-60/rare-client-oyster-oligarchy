@@ -10,7 +10,6 @@ export const MyPosts = () => {
     const [posts, setPosts] = useState ([])
     const navigate = useNavigate()
 
-    console.log(userObject)
 
     useEffect(() => {
         fetch(`http://localhost:8088/posts?user_id=${userObject}`)
@@ -26,16 +25,29 @@ export const MyPosts = () => {
         return(formattedDate.join("/"))
     }
 
-    // const deleteButton = (id) => {
-    //     return <button onClick={() => {
-    //         fetch(`http://localhost:8088/activities/${id}`, {
-    //             method: "DELETE",
-    //         })
-    //             .then(() => {
-    //                 getAllActivities()
-    //             })
-    //     }} className="schedule_delete">Delete</button>
-    // }
+    const getMyPosts = () => {
+        fetch(`http://localhost:8088/posts?user_id=${userObject}`)
+        .then((res) => res.json())
+        .then((postsArray) => {
+            setPosts(postsArray)
+        })
+    }
+
+    const handleDelete = (event) => {
+        if (window.confirm("Are you sure you want to delete this post?")) {
+            return deleteButton(event)
+        }
+    }
+
+    const deleteButton = (id) => {
+
+            fetch(`http://localhost:8088/posts/${id}`, {
+                method: "DELETE",
+            })
+                .then(() => {
+                    getMyPosts()
+                })
+        }
 
         return(
             <>
@@ -56,8 +68,7 @@ export const MyPosts = () => {
                                 <p className="post-details">Category: {postObj.label}</p>
                                 <p className="post-details">Posted on: {formatDate(postObj)}</p>
                                 <button>Edit</button>
-                                <button>Delete</button>
-                                {/* {deleteButton(activityObj.id)} */}
+                                <button className="delete-button" onClick={(event)=> (handleDelete(event))}>Delete</button>
                             </div>
                             </div>
                         )

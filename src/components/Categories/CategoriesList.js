@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { AddCategory } from "./AddCategoryForm"
 import "./Categories.css"
 
 // const localRainbowUser = localStorage.getItem("rainbow_user")

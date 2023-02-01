@@ -30,8 +30,6 @@ export const AddPostForm = () => {
     const handleSaveButtonClick = (click) => {
         click.preventDefault()
 
-
-
         const postToSend = {
             user_id: userObject.id,
             category_id: post.category_id,
@@ -49,16 +47,13 @@ export const AddPostForm = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(postToSend)
-        })
+            })
             .then(response => response.json())
-            .then(() => window.alert("Successfully Added")
-
-            ).then(() => {
+            .then(() => {
                 navigate("/my-posts")
-            }
-            )
-
-    }
+            })
+        }
+        
     return (
         <>
 {/*         
@@ -135,17 +130,11 @@ export const AddPostForm = () => {
                 </div>
             </fieldset>
 
-
             <button
-                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                    className="btn btn-dark btn-lg">
-                    Add Post
+                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                className="save-button">
+                Add Post
             </button>
-            {/* <button 
-            onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
-            className="save-button">
-                Submit Post
-            </button> */}
         </form>
         </>
     )

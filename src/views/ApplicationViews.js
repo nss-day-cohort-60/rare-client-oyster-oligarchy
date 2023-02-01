@@ -7,7 +7,6 @@ import { CategoryList } from "../components/Categories/CategoriesList"
 import { Authorized } from "./Authorized"
 import { PostContainer } from "../components/Posts/PostContainer"
 // import { PostList } from "../components/Posts/PostsList"
-import { AddCategory, AddCatergory, categoryAdd } from "../components/Categories/AddCategoryForm"
 import { AddPostForm } from "../components/Posts/AddPostForm"
 
 export const ApplicationViews = ({ token, setToken }) => {
