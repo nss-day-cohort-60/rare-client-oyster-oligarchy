@@ -19,11 +19,11 @@ export const MyPosts = () => {
             })
     }, [])
 
-    const formatDate = (postObj) => {
-        let formattedDate = postObj.publication_date.split("-")
-        formattedDate = [formattedDate[1],formattedDate[2],formattedDate[0]]
-        return(formattedDate.join("/"))
-    }
+    // const formatDate = (postObj) => {
+    //     let formattedDate = postObj.publication_date.split("-")
+    //     formattedDate = [formattedDate[1],formattedDate[2],formattedDate[0]]
+    //     return(formattedDate.join("/"))
+    // }
 
     const getMyPosts = () => {
         fetch(`http://localhost:8088/posts?user_id=${userObject}`)
@@ -33,21 +33,16 @@ export const MyPosts = () => {
         })
     }
 
-    const handleDelete = (event) => {
-        if (window.confirm("Are you sure you want to delete this post?")) {
-            return deleteButton(event)
-        }
-    }
-
     const deleteButton = (id) => {
-
+        if (window.confirm("Are you sure you want to delete this post?")) {
             fetch(`http://localhost:8088/posts/${id}`, {
                 method: "DELETE",
             })
-                .then(() => {
-                    getMyPosts()
-                })
+            .then(() => {
+                getMyPosts()
+            })
         }
+    }
 
         return(
             <>
@@ -59,23 +54,29 @@ export const MyPosts = () => {
                 {posts.map((postObj) => {
                     if (postObj.user_id === userObject)
                         return (
-                            <div className="activity-card" key={postObj.id}>
-                            <div className="each-post">
-                                <h3 className="post-title">{postObj.title}</h3>
+                            <>
+                            <div className="activity-card" key={postObj.id} value={postObj.id}>
+                            <div className="each-post" key={postObj.id}>
+                                <h3 className="post-title" key={postObj.id}>{postObj.title}</h3>
                                 <img src={postObj.image_url}/>
                                 <p className="post-details">{postObj.content}</p>
-                                <p className="post-details">Author: {postObj.first_name} {postObj.last_name}</p>
-                                <p className="post-details">Category: {postObj.label}</p>
-                                <p className="post-details">Posted on: {formatDate(postObj)}</p>
+                                <p className="post-details">Author: {postObj.user.first_name} {postObj.user.last_name}</p>
+                                <p className="post-details">Category: {postObj.category.label}</p>
+                                {/* <p className="post-details">Posted on: {formatDate(postObj)}</p> */}
+                                <p className="post-details">Posted on: {postObj.publication_date}</p>
                                 <button>Edit</button>
-                                <button className="delete-button" onClick={(event)=> (handleDelete(event))}>Delete</button>
+
+                                <button className="delete-button" onClick={()=> {
+                                    deleteButton(postObj.id)}}>Delete</button>
                             </div>
                             </div>
+                            </>
                         )
                     else {
                         return <>
                         </>
                     }
+                    
                     })}
                 </div>
             </>

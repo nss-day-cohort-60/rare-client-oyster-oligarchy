@@ -6,14 +6,16 @@ const userObject = JSON.parse(localUser)
 
 export const AddPostForm = () => {
 
+    const today = Date.now()
+
     const [post, addPost] = useState({
-        user_id: userObject.id,
+        user_id: userObject,
         category_id: 0,
         title: "",
-        publication_date: "",
+        publication_date: `${today}`,
         image_url: "",
         content: "",
-        approved: ""
+        approved: 1
     })
     const [categories, setCategory] = useState([])
 
@@ -30,18 +32,18 @@ export const AddPostForm = () => {
     const handleSaveButtonClick = (click) => {
         click.preventDefault()
 
+
         const postToSend = {
-            user_id: userObject.id,
+            user_id: userObject,
             category_id: post.category_id,
             title: post.title,
-            publication_date: post.publication_date,
-            // publication_date: today,
+            publication_date: `${today}`,
             image_url: post.image_url,
             content: post.content,
-            approved: post.approved
+            approved: 1
         }
 
-        return fetch(`http://localhost:8088/posts?_expand=category_id&_expand=user_id`, {
+        return fetch(`http://localhost:8088/posts`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -80,7 +82,7 @@ export const AddPostForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="act-text" htmlFor="category_id">Title: </label>
+                    <label className="act-text" htmlFor="title">Title: </label>
                     <input
                         type="text"
                         className="act-control"
@@ -97,7 +99,7 @@ export const AddPostForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="act-text" htmlFor="category_id">Image_url: </label>
+                    <label className="act-text" htmlFor="image_url">Image_url: </label>
                     <input
                         type="text"
                         className="act-control"
@@ -114,7 +116,7 @@ export const AddPostForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="act-text" htmlFor="category_id">Content: </label>
+                    <label className="act-text" htmlFor="content">Content: </label>
                     <input
                         type="text"
                         className="act-control"
@@ -139,3 +141,6 @@ export const AddPostForm = () => {
         </>
     )
 }
+
+
+// Uncaught (in promise) SyntaxError: Unexpected end of JSON input
