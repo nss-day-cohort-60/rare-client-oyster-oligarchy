@@ -105,7 +105,7 @@ export const AddPostForm = () => {
                     <input
                         type="text"
                         className="act-control"
-                        placeholder="Image_url"
+                        placeholder="Image URL"
                         value={post.image_url}
                         onChange={
                             (evt)=> {
