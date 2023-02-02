@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom"
 import "./Posts.css"
 
 
-const localUser = localStorage.getItem("auth_token")
-const userObject = JSON.parse(localUser)
 
 export const MyPosts = () => {
     const [posts, setPosts] = useState ([])
     const navigate = useNavigate()
-
+    
+    const localUser = localStorage.getItem("auth_token")
+    const userObject = JSON.parse(localUser)
 
     useEffect(() => {
         fetch(`http://localhost:8088/posts?user_id=${userObject}`)
