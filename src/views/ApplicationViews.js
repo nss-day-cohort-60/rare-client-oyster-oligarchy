@@ -7,6 +7,9 @@ import { CategoryList } from "../components/Categories/CategoriesList"
 import { Authorized } from "./Authorized"
 import { PostContainer } from "../components/Posts/PostContainer"
 // import { PostList } from "../components/Posts/PostsList"
+import { AddPostForm } from "../components/Posts/AddPostForm"
+import { PostEditForm } from "../components/Posts/PostEdit"
+import { PostEditForm2 } from "../components/Posts/PostEdit2"
 
 export const ApplicationViews = ({ token, setToken }) => {
   return <>
@@ -22,7 +25,9 @@ export const ApplicationViews = ({ token, setToken }) => {
       <Route element={<Authorized token={token} />}>
         {/* Add Routes here */}
       <Route path="/my-posts" element={<MyPosts setToken={setToken} />}  />
-        
+      <Route path="/new-post" element={<AddPostForm setToken={setToken} />}  />
+      {/* <Route path="/post-edit/:postId" element={<PostEditForm setToken={setToken} />} /> */}
+      <Route path="/post-edit/:postId" element={<PostEditForm2 setToken={setToken} />} />
       </Route>
     </Routes>
   </>
