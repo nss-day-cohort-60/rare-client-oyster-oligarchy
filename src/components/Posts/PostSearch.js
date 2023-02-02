@@ -1,7 +1,7 @@
 export const PostSearch = ({ setterFunction }) => {
     return (
-        <div>
-            <input 
+        <div className="search">
+            <input className="search"
                 onChange={
                     (changeEvent) => {
                         setterFunction(changeEvent.target.value)
