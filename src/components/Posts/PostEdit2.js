@@ -5,7 +5,15 @@ export const PostEditForm2 = () => {
     const localUser = localStorage.getItem("auth_token")
     const userObject = JSON.parse(localUser)
 
-    const today = Date.now()
+    const getCurrentDate = () => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}-${month}-${day}`;
+    }
+
+    const today = getCurrentDate()
 
     const [post, setPost] = useState({
             category_id: 0,
@@ -14,17 +22,17 @@ export const PostEditForm2 = () => {
             image_url: "",
             content: "",
             approved: 1,
-            userId: userObject
+            user_id: userObject
     })
     const [categories, setCategories] = useState ([])
     const navigate = useNavigate()
     const {postId} = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:8088/posts?id=${postId}`)
+        fetch(`http://localhost:8088/posts/${postId}`)
         .then(response => response.json())
         .then((data) => {
-            setPost(data[0])
+            setPost(data)
         })
     }, [])
 
@@ -47,14 +55,13 @@ export const PostEditForm2 = () => {
     const handleSaveButtonClick = (clickEvent) => {
         clickEvent.preventDefault()
 
-            fetch(`http://localhost:8088/posts/${post.id}`, {
+            fetch(`http://localhost:8088/posts/${postId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(post)
             })
-            .then(response => response.json())
             .then(() => {
                     setTimeout(() => navigate("/posts"), 3000);
         })
