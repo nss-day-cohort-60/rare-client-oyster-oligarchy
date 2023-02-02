@@ -13,7 +13,6 @@ export const PostEditForm = () => {
             publication_date: `${today}`,
             image_url: "",
             content: "",
-            approved: 1,
             userId: userObject
     })
     const [categories, setCategories] = useState ([])
