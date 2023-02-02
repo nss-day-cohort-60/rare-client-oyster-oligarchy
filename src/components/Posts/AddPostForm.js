@@ -6,7 +6,15 @@ export const AddPostForm = () => {
     const localUser = localStorage.getItem("auth_token")
     const userObject = JSON.parse(localUser)
 
-    const today = Date.now()
+    const getCurrentDate = () => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}-${month}-${day}`;
+    }
+    
+    const today = getCurrentDate()
 
     const [post, addPost] = useState({
         user_id: userObject,
@@ -14,8 +22,7 @@ export const AddPostForm = () => {
         title: "",
         publication_date: `${today}`,
         image_url: "",
-        content: "",
-        approved: 1
+        content: ""
     })
     const [categories, setCategory] = useState([])
 
@@ -39,8 +46,7 @@ export const AddPostForm = () => {
             title: post.title,
             publication_date: `${today}`,
             image_url: post.image_url,
-            content: post.content,
-            approved: 1
+            content: post.content
         }
 
         return fetch(`http://localhost:8088/posts`, {
