@@ -1,16 +1,83 @@
-.categories-title {
+.categories-page-title {
+    display: flex;
     color: black;
     font-weight: 800;
     font-size: x-large;
-    margin-left: 40px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.categories-title {
+    display: flex;
+    color: black;
+    font-weight: 800;
+    font-size: x-large;
+    margin-left: 20px;
 }
 
 .categories-container{
     align-items: center;
-    margin-left: 250px;
 }
 
 .activity-card{
     border: 2px solid black;
     width: 500px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.categories-buttons {
+    display: flex;
+}
+
+.edit-delete-btn {
+    margin-right: 3px
+}
+
+.search-container {
+    align-items: center;
+    outline-style: solid;
+    margin-left: 200px;
+    border: 1px solid black;
+    width: 400px;
+    border-radius: 50px;
+    max-height: 275px;
+}
+
+.search-title {
+    text-align: center;
+    color: black;
+    font-weight: 800;
+    font-size: x-large;
+}
+
+.category-search {
+    align-items: center;
+    margin-top: 65px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    margin-top: 5%;
+    margin-left: 121px;
+}
+
+.categoryadd {
+    border-radius: 5px;
+    display: block;
+    width: 90%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: 30px .75rem;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    border-color: black ;
+    background-clip: padding-box;
+    border-radius: 10px;
 }
