@@ -62,7 +62,7 @@ export const PostEditForm2 = () => {
                 body: JSON.stringify(post)
             })
             .then(() => {
-                    setTimeout(() => navigate("/my-posts"), 3000);
+                    navigate("/my-posts");
         })
     }
 
@@ -109,7 +109,7 @@ export const PostEditForm2 = () => {
                         <input
                             type="text"
                             className="act-control"
-                            placeholder="Image_url"
+                            placeholder="Image URL"
                             value={post.image_url}
                             onChange={
                                 (evt)=> {
