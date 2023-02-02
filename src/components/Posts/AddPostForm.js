@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const localUser = localStorage.getItem("auth_token")
-const userObject = JSON.parse(localUser)
 
 export const AddPostForm = () => {
+    const localUser = localStorage.getItem("auth_token")
+    const userObject = JSON.parse(localUser)
 
     const today = Date.now()
 
