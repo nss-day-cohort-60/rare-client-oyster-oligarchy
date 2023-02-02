@@ -6,7 +6,15 @@ export const AddPostForm = () => {
     const localUser = localStorage.getItem("auth_token")
     const userObject = JSON.parse(localUser)
 
-    const today = Date.now()
+    
+    const getCurrentDate = () => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year} - ${month} - ${day}`;
+      }
+      const today = getCurrentDate()
 
     const [post, addPost] = useState({
         user_id: userObject,
