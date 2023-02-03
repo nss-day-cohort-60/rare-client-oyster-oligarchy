@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import "./Posts.css"
 
 
 export const AddPostForm = () => {
@@ -101,7 +102,7 @@ export const AddPostForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="act-text" htmlFor="image_url">Image_url: </label>
+                    <label className="act-text" htmlFor="image_url">Image URL: </label>
                     <input
                         type="text"
                         className="act-control"
@@ -121,7 +122,7 @@ export const AddPostForm = () => {
                     <label className="act-text" htmlFor="content">Content: </label>
                     <input
                         type="text"
-                        className="act-control"
+                        className="act-control2"
                         placeholder="Content"
                         value={post.content}
                         onChange={

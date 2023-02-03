@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import "./Posts.css"
 
 export const PostEditForm2 = () => {
     const localUser = localStorage.getItem("auth_token")
@@ -122,10 +123,10 @@ export const PostEditForm2 = () => {
                 </fieldset>
                 <fieldset>
                     <div className="form-group">
-                        <label className="act-text" htmlFor="content">Content: </label>
+                        <label className="act-text2" htmlFor="content">Content: </label>
                         <input
                             type="text"
-                            className="act-control"
+                            className="act-control2"
                             placeholder="Content"
                             value={post.content}
                             onChange={

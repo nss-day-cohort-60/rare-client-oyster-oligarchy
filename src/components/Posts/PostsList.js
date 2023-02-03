@@ -68,8 +68,8 @@ export const PostList = ({searchTermState}) => {
 
 
                             <>
-                            <aside>
-                                <select onChange={ (event) => { CategoryFilter(event) }} type="categories">
+                            <aside className="search">
+                                <select className="search" onChange={ (event) => { CategoryFilter(event) }} type="categories">
                                     <option value={0} >Search by Category</option>
                                     {categories.map(category => (<option  value={category.id}>{category.label}</option>))}
                                 </select>

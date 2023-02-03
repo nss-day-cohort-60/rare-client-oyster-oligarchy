@@ -50,7 +50,7 @@ export const MyPosts = () => {
                 <h1 className="posts-title">Posts</h1>
             </div>
             
-            <div className="posts-container">
+            <div className="myPosts-container">
                 {posts.map((postObj) => {
                     if (postObj.user_id === userObject)
                         return (

@@ -7,10 +7,62 @@
 
 .posts-container{
     align-items: center;
-    margin-left: 50px;
+    margin-left: 75px;
 }
 
 .activity-card{
-    border: 2px solid black;
     width: 500px;
+    margin: 10px;
+    padding: 15px;
+    background-color: rgba(211, 211, 211, 0.693);
+    border-radius: 2rem;
+    box-shadow: 2px 1.5px 2px grey;
+}
+
+.postForm{
+    margin-left: 25%;
+}
+
+.postForm_title{
+    color: black;
+    font-weight: 800;
+    font-size: x-large;
+    margin-bottom: 15px;
+}
+
+.form-group{
+    margin: 6px;
+    width: 200px;
+}
+
+.act-control{
+    width: 300px;
+    height: 30px;
+}
+
+.act-control2{
+    width: 750px;
+    height: 200px;
+    /* inline-size: 150px; */
+    overflow-wrap: break-all;
+}
+
+.save-button{
+    margin-left: 650px;
+    margin-top: 15px;
+}
+
+
+.myPosts-container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.search{
+    margin-left: 550px;
+    margin-top: 10px;
+    height: 30px;
 }
