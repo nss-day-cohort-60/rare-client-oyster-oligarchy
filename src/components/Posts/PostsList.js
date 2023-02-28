@@ -32,7 +32,7 @@ export const PostList = ({searchTermState}) => {
     // )
 
     useEffect(() => {
-        fetch(`http://localhost:8088/posts`)
+        fetch(`http://localhost:8000/posts`)
             .then((res) => res.json())
             .then((postsArray) => {
             setPosts(postsArray)
@@ -41,7 +41,7 @@ export const PostList = ({searchTermState}) => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:8088/categories`)
+        fetch(`http://localhost:8000/categories`)
             .then((res) => res.json())
             .then((catArray) => {
             setCategories(catArray)

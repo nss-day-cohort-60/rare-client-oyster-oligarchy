@@ -31,14 +31,14 @@ export const CategoryList = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8088/categories`)
+        fetch(`http://localhost:8000/categories`)
             .then((res) => res.json())
             .then((categoryArray) => {
                 setCategories(categoryArray)
             })
     }, [])
     const rerender = () => {
-        fetch(`http://localhost:8088/categories`)
+        fetch(`http://localhost:8000/categories`)
             .then((res) => res.json())
             .then((categoryArray) => {
                 setCategories(categoryArray)
@@ -55,7 +55,7 @@ export const CategoryList = () => {
             label: value
 
         }
-        return fetch(`http://localhost:8088/categories`, {
+        return fetch(`http://localhost:8000/categories`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

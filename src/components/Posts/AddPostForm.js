@@ -30,7 +30,7 @@ export const AddPostForm = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('http://localhost:8088/categories')
+        fetch('http://localhost:8000/categories')
             .then((res) => res.json())
             .then((categoriesData) => {
             setCategory(categoriesData)
@@ -50,7 +50,7 @@ export const AddPostForm = () => {
             content: post.content
         }
 
-        return fetch(`http://localhost:8088/posts`, {
+        return fetch(`http://localhost:8000/posts`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
