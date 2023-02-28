@@ -31,14 +31,22 @@ export const CategoryList = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8000/categories`)
+        fetch(`http://localhost:8000/categories`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((categoryArray) => {
                 setCategories(categoryArray)
             })
     }, [])
     const rerender = () => {
-        fetch(`http://localhost:8000/categories`)
+        fetch(`http://localhost:8000/categories`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((categoryArray) => {
                 setCategories(categoryArray)
@@ -58,6 +66,7 @@ export const CategoryList = () => {
         return fetch(`http://localhost:8000/categories`, {
             method: "POST",
             headers: {
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(categoryToSendToAPI)

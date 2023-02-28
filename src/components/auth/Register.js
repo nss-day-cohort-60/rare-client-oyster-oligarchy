@@ -9,6 +9,7 @@ export const Register = ({setToken}) => {
   const email = useRef()
   const username = useRef()
   const bio = useRef()
+  const profile_image_url = useRef()
   const password = useRef()
   const verifyPassword = useRef()
   const passwordDialog = useRef()
@@ -24,16 +25,17 @@ export const Register = ({setToken}) => {
         last_name: lastName.current.value,
         email: email.current.value,
         password: password.current.value,
-        bio: bio.current.value
+        bio: bio.current.value,
+        profile_image_url: profile_image_url.current.value
       }
 
       registerUser(newUser)
-        .then(res => {
-          if ("valid" in res && res.valid) {
-            setToken(res.token)
+      .then(res => {
+        if ("token" in res) {
+            localStorage.setItem("auth_token", res.token)
             navigate("/")
-          }
-        })
+        }
+      })    
     } else {
       passwordDialog.current.showModal()
     }
@@ -86,6 +88,13 @@ export const Register = ({setToken}) => {
                 <input className="input" type="password" placeholder="Verify Password" ref={verifyPassword} />
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Profile Image</label>
+          <div className="control">
+            <input className="input" type="url" ref={profile_image_url} />
           </div>
         </div>
 
