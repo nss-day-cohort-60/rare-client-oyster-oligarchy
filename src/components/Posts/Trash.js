@@ -20,7 +20,7 @@ export const PostEditForm = () => {
     const {postId} = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:8088/posts?id=${postId}`)
+        fetch(`http://localhost:8000/posts?id=${postId}`)
         .then(response => response.json())
         .then((data) => {
             setPost(data[0])
@@ -28,7 +28,7 @@ export const PostEditForm = () => {
     }, [])
 
     // useEffect(() => {
-    //     fetch(`http://localhost:8088/posts/${postId}`)
+    //     fetch(`http://localhost:8000/posts/${postId}`)
     //     .then(response => response.json())
     //     .then((data) => {
     //         setPost(data[0])
@@ -36,7 +36,7 @@ export const PostEditForm = () => {
     // }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:8088/categories`)
+        fetch(`http://localhost:8000/categories`)
             .then((res) => res.json())
             .then((catArray) => {
             setCategories(catArray)
@@ -46,7 +46,7 @@ export const PostEditForm = () => {
     const handleSaveButtonClick = (clickEvent) => {
         clickEvent.preventDefault()
 
-            fetch(`http://localhost:8088/posts/${post.id}`, {
+            fetch(`http://localhost:8000/posts/${post.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

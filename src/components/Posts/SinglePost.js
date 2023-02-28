@@ -12,7 +12,7 @@ export const SinglePost = () => {
     const {postId} = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:8088/posts/${postId}`)
+        fetch(`http://localhost:8000/posts/${postId}`)
             .then((res) => res.json())
             .then((postsArray) => {
             setPost(postsArray)

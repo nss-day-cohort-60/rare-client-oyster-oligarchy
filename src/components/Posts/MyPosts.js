@@ -12,7 +12,7 @@ export const MyPosts = () => {
     const userObject = JSON.parse(localUser)
 
     useEffect(() => {
-        fetch(`http://localhost:8088/posts?user_id=${userObject}`)
+        fetch(`http://localhost:8000/posts?user_id=${userObject}`)
             .then((res) => res.json())
             .then((postsArray) => {
             setPosts(postsArray)
@@ -26,7 +26,7 @@ export const MyPosts = () => {
     // }
 
     const getMyPosts = () => {
-        fetch(`http://localhost:8088/posts?user_id=${userObject}`)
+        fetch(`http://localhost:8000/posts?user_id=${userObject}`)
         .then((res) => res.json())
         .then((postsArray) => {
             setPosts(postsArray)
@@ -35,7 +35,7 @@ export const MyPosts = () => {
 
     const deleteButton = (id) => {
         if (window.confirm("Are you sure you want to delete this post?")) {
-            fetch(`http://localhost:8088/posts/${id}`, {
+            fetch(`http://localhost:8000/posts/${id}`, {
                 method: "DELETE",
             })
             .then(() => {
