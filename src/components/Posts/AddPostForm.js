@@ -30,7 +30,11 @@ export const AddPostForm = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('http://localhost:8000/categories')
+        fetch('http://localhost:8000/categories', {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((categoriesData) => {
             setCategory(categoriesData)
@@ -53,6 +57,7 @@ export const AddPostForm = () => {
         return fetch(`http://localhost:8000/posts`, {
             method: "POST",
             headers: {
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`,    
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(postToSend)

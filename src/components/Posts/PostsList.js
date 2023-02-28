@@ -32,7 +32,11 @@ export const PostList = ({searchTermState}) => {
     // )
 
     useEffect(() => {
-        fetch(`http://localhost:8000/posts`)
+        fetch(`http://localhost:8000/posts`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((postsArray) => {
             setPosts(postsArray)
@@ -41,7 +45,11 @@ export const PostList = ({searchTermState}) => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:8000/categories`)
+        fetch(`http://localhost:8000/categories`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((catArray) => {
             setCategories(catArray)

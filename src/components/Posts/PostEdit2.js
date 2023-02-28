@@ -37,7 +37,11 @@ export const PostEditForm2 = () => {
     // }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:8000/posts/${postId}`)
+        fetch(`http://localhost:8000/posts/${postId}`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
         .then(response => response.json())
         .then((data) => {
             setPost(data)
@@ -45,7 +49,11 @@ export const PostEditForm2 = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:8000/categories`)
+        fetch(`http://localhost:8000/categories`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((catArray) => {
             setCategories(catArray)
@@ -58,6 +66,7 @@ export const PostEditForm2 = () => {
             fetch(`http://localhost:8000/posts/${postId}`, {
                 method: "PUT",
                 headers: {
+                    "Authorization": `Token ${localStorage.getItem("auth_token")}`,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(post)

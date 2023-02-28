@@ -12,7 +12,11 @@ export const SinglePost = () => {
     const {postId} = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:8000/posts/${postId}`)
+        fetch(`http://localhost:8000/posts/${postId}`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            }
+        })
             .then((res) => res.json())
             .then((postsArray) => {
             setPost(postsArray)
